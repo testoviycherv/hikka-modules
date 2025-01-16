@@ -2,7 +2,7 @@ from hikkatl.types import Message
 from .. import loader, utils
 
 @loader.tds
-class AppManager(loader.Module):
+class AppMaager(loader.Module):
     """Module for managing applications"""
     strings = {"name": "AppManager"}
 
@@ -53,4 +53,4 @@ class AppManager(loader.Module):
     @loader.command()
     async def applist(self, message: Message):
         """Show App list"""
-        await utils,answer(message, "Your list (self.app_list)")
+        await utils,answer(message, "Your list\n{self.app_list}")
