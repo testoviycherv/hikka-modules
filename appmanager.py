@@ -45,12 +45,11 @@ class AppMaager(loader.Module):
             await utils.answer(message, "Invalid application number.")
 
     @loader.command()
-    async def appcount(self, message: Message):
-        """Clear the removed applications counter. Example: .clearcount"""
-        self.removed_count = 0
-        await utils.answer(message, "Removed applications counter has been reset.")
-    
-    @loader.command()
     async def applist(self, message: Message):
-        """Show App list"""
-        await utils,answer(message, "Your list\n{self.app_list}")
+        """Show the list of applications. Example: .applist"""
+        if not self.app_list:
+            await utils.answer(message, "Your application list is empty.")
+            return
+        
+        app_list_str = "\n".join(f"{i+1}. {app}" for i, app in enumerate(self.app_list))
+        await utils.answer(message, f"Your application list:\n\n{app_list_str}")
